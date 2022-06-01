@@ -41,11 +41,37 @@ fn mask(x: u32) {
     print!("\n");
 }
 
+fn bis(x: u8, m: u8) -> u8 {
+    bic(x, m) | m
+}
+
+fn bic(x: u8, m: u8) -> u8 {
+    x & !m
+}
+
+fn boor_or(x: u8, y: u8) -> u8 {
+    bis(x, y)
+}
+
+fn boor_and(x: u8, y: u8) -> u8 {
+    bic(bic(bis(x, y), bic(x, y)), bic(y, x))
+}
+
+fn boor_xor(x: u8, y: u8) -> u8 {
+    bis(bic(x, y), bic(y, x))
+}
+
 fn main() {
     // let x: *mut i32 = &mut 2;
     // let y: *mut i32 = &mut 4;
     // inplace_swap(x, y);
+
     // let v = vec![1, 2, 3, 4, 5];
     // reverse_array(v, 5);
-    mask(0x87654321);
+    
+    // mask(0x87654321);
+
+    println!("{:08b}", boor_or(0b11101110, 0b10001011)); // 0b11101111
+    println!("{:08b}", boor_and(0b11101110, 0b10001011)); // 0b10001010
+    println!("{:08b}", boor_xor(0b11101110, 0b10001011)); // 0b01100101
 }
