@@ -26,10 +26,26 @@ fn reverse_array(mut a: Vec<i32>, cnt: usize) {
     println!("{:?}", a);
 }
 
+fn mask(x: u32) {
+    for byte in (x & 0xff).to_be_bytes().into_iter() {
+        print!("{:02x}", byte);
+    }
+    print!("\n");
+    for byte in (x ^ (!0xff)).to_be_bytes().into_iter() {
+        print!("{:02x}", byte);
+    }
+    print!("\n");
+    for byte in (x | 0xff).to_be_bytes().into_iter() {
+        print!("{:02x}", byte);
+    }
+    print!("\n");
+}
+
 fn main() {
     // let x: *mut i32 = &mut 2;
     // let y: *mut i32 = &mut 4;
     // inplace_swap(x, y);
-    let v = vec![1, 2, 3, 4, 5];
-    reverse_array(v, 5);
+    // let v = vec![1, 2, 3, 4, 5];
+    // reverse_array(v, 5);
+    mask(0x87654321);
 }
