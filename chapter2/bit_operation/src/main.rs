@@ -61,6 +61,23 @@ fn boor_xor(x: u8, y: u8) -> u8 {
     bis(bic(x, y), bic(y, x))
 }
 
+
+fn compare_bit_operators(a: u8, b:u8) {
+    println!("{:x}", a & b);
+    println!("{:x}", a | b);
+    println!("{:x}", !a | !b);
+    println!("{:x}", a & !b);
+}
+
+fn check_equal(x: u8, y: u8) -> bool {
+    // rust 컴파일러가 엄격해서 == 없이 안되넹..
+    if (x & !y) == 0 {
+        true
+    } else {
+        false
+    }
+}
+
 fn main() {
     // let x: *mut i32 = &mut 2;
     // let y: *mut i32 = &mut 4;
@@ -71,7 +88,11 @@ fn main() {
     
     // mask(0x87654321);
 
-    println!("{:08b}", boor_or(0b11101110, 0b10001011)); // 0b11101111
-    println!("{:08b}", boor_and(0b11101110, 0b10001011)); // 0b10001010
-    println!("{:08b}", boor_xor(0b11101110, 0b10001011)); // 0b01100101
+    // println!("{:08b}", boor_or(0b11101110, 0b10001011)); // 0b11101111
+    // println!("{:08b}", boor_and(0b11101110, 0b10001011)); // 0b10001010
+    // println!("{:08b}", boor_xor(0b11101110, 0b10001011)); // 0b01100101
+
+    // compare_bit_operators(0x55, 0x46);
+
+    println!("{}", check_equal(0x14, 0x14));
 }
