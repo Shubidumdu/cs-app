@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 typedef unsigned char *byte_pointer;
 
@@ -21,6 +22,11 @@ void show_pointer(void *x) {
     show_bytes((byte_pointer) &x, sizeof(void *));
 }
 
+void show_string() {
+  const char *m = "anopqz";
+  show_bytes((byte_pointer) m, strlen(m));
+}
+
 int main() {
   int val = 12345;
   int ival = val;
@@ -29,6 +35,7 @@ int main() {
   show_int(ival);
   show_float(fval);
   show_pointer(pval);
+  show_string();
   return 0;
 }
 
