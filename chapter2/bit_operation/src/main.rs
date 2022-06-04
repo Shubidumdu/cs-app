@@ -78,6 +78,14 @@ fn check_equal(x: u8, y: u8) -> bool {
     }
 }
 
+fn bit_shift(a: u8)  {
+    println!("==============0x{0:02x}:{0}==============", a);
+    println!("a => Binary: 0b{0:08b}, Hex: 0x{0:02x}", a);
+    println!("a << 2 => Binary: 0b{0:08b}, Hex: 0x{0:02x}", a << 2);
+    println!("a >> 3 => Binary: 0b{0:08b}, Hex: 0x{0:02x}", a >> 3);
+    // rust는 알아서 unsigned에 대해 arithmetic shift를, signed에 대해서는 logical shift를 합니다.
+} 
+
 fn main() {
     // let x: *mut i32 = &mut 2;
     // let y: *mut i32 = &mut 4;
@@ -94,5 +102,10 @@ fn main() {
 
     // compare_bit_operators(0x55, 0x46);
 
-    println!("{}", check_equal(0x14, 0x14));
+    // println!("{}", check_equal(0x14, 0x14));
+
+    bit_shift(0xD4);
+    bit_shift(0x64);
+    bit_shift(0x72);
+    bit_shift(0x44);
 }
